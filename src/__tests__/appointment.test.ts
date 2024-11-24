@@ -7,10 +7,10 @@ describe('server', () => {
     describe('POST /api/appointment', () => {
         it('should create a appointment', async () => {
             const response = await request(httpapp).post('/api/appointment').send({
-                    firstName: 'John',
-                    lastName: 'Doe',
+                    firstName: 'Shubham',
+                    lastName: 'Rai',
                     timeSlot: '10:00 AM - 11:00 AM',
-                    doctorName: 'Dr. John Doe',
+                    doctorName: 'Dr. Shahruk Khan',
                     email: 'khatri.prince1999@gmail.com'
                 }).set('Accept', 'application/json');
             expect(response.statusCode).toBe(200);
@@ -18,9 +18,9 @@ describe('server', () => {
         });
         it('should give 400 incorrect payload as timeslot is not provided', async () => {
             const response = await request(httpapp).post('/api/appointment').send({
-                    firstName: 'John',
-                    lastName: 'Doe',
-                    doctorName: 'Dr. John Doe',
+                    firstName: 'Shubham',
+                    lastName: 'Rai',
+                    doctorName: 'Dr. Shahruk Khan',
                     email: 'khatri.prince1999@gmail.com'
                 })
             expect(response.statusCode).toBe(400);
@@ -28,17 +28,17 @@ describe('server', () => {
         });
         it('should give 409 Booking Failed', async () => {
             await request(httpapp).post('/api/appointment').send({
-                firstName: 'John',//change
-                lastName: 'Doe',//change
+                firstName: 'Shubham',//change
+                lastName: 'Rai',//change
                 timeSlot: '09:00 AM - 10:00 AM',
-                doctorName: 'Dr. John Doe',
+                doctorName: 'Dr. Shahruk Khan',
                 email: 'khatri.prince1999@gmail.com'
             }).set('Accept', 'application/json');
             const response = await request(httpapp).post('/api/appointment').send({
                 firstName: 'Prince',
                 lastName: 'Khatri',
                 timeSlot: '09:30 AM - 10:30 AM',
-                doctorName: 'Dr. John Doe',//change
+                doctorName: 'Dr. Shahruk Khan',//change
                 email: 'khatri.prince1999@gmail.com'
             }).set('Accept', 'application/json');
             expect(response.statusCode).toBe(409);
@@ -49,10 +49,10 @@ describe('server', () => {
         it('should return appointment details for the given email', async () => {
             const patientEmail = 'khatri.prince1999@gmail.com';
             await request(httpapp).post('/api/appointment').send({
-                firstName: 'John',//change
-                lastName: 'Doe',//change
+                firstName: 'Shubham',//change
+                lastName: 'Rai',//change
                 timeSlot: '09:00 AM - 10:00 AM',
-                doctorName: 'Dr. John Doe',
+                doctorName: 'Dr. Shahruk Khan',
                 email: patientEmail
             }).set('Accept', 'application/json');
             const response = await request(httpapp).get(`/api/appointments/${patientEmail}`);
@@ -67,7 +67,7 @@ describe('server', () => {
     });
     describe('GET /api/appointments/doctor/:doctorName', () => {
         it('should give 200 Appointment not found', async () => {
-            const doctorName = "Dr. John Doe";
+            const doctorName = "Dr. Shahruk Khan";
             const response = await request(httpapp).get(`/api/appointments/doctor/${doctorName}`)
             expect(response.statusCode).toBe(200);
         });
