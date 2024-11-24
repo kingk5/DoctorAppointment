@@ -1,0 +1,23 @@
+# Node.js dependencies
+/node_modules/
+
+# Build output
+/dist/
+/build/
+
+# dotenv environment variables file
+.env
+
+# TypeScript output
+/*.js
+/*.tsbuildinfo
+
+# Debugging files
+/.vscode/
+*.log
+
+# Exclude npm package-lock file
+/package-lock.json
+
+# Or if using Yarn, exclude yarn.lock
+/yarn.lock
