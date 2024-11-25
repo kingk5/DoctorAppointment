@@ -28,11 +28,22 @@ npm install
 3. Run in dev mode
 
 ```sh
-    npm run dev
+npm run dev
 ```
 
 4. Run test cases
 
 ```sh
-    npm run test
+npm run test
+```
+
+5. Build the Application
+   
+```sh
+npm run build
+```
+1. Run the project
+   
+```sh
+npm run start
 ```
